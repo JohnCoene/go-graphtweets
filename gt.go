@@ -1,11 +1,7 @@
-package main
+package graphtweets
 
 import (
-	"fmt"
-	"log"
-
 	"github.com/dghubble/go-twitter/twitter"
-	"github.com/dghubble/oauth1"
 )
 
 // Edges A struct of edges
@@ -47,23 +43,8 @@ func GetNodes(edges Edges) Nodes {
 	return (nodes)
 }
 
-func main() {
-	config := oauth1.NewConfig("niLRMTSNzOw7Fqp1WNbdkdln8", "yFFYvgW8kJguFBtXmaR602Hyo1RDDRBeetZo7nIo5JecAAC4aA")
-	token := oauth1.NewToken("1571967648-u5ezlrsWplrHaXT4VMuVLpES2ZB8kx6UIRH4Obj", "admb6ncPJJOaCwh7HR4YASQdSJ2H9B9dIAL50yzmOHsvL")
-	httpClient := config.Client(oauth1.NoContext, token)
-
-	// Twitter client
-	client := twitter.NewClient(httpClient)
-
-	// Search Tweets
-	search, _, err := client.Search.Tweets(&twitter.SearchTweetParams{
-		Query: "rstats",
-	})
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
+// GetMentionsGraph Get a mentions graph
+func GetMentionsGraph(search twitter.Search) Graph {
 	fr := make([]string, 0)
 	to := make([]string, 0)
 
@@ -84,7 +65,5 @@ func main() {
 	nodes := GetNodes(edges)
 
 	graph := Graph{nodes, edges}
-
-	fmt.Println(graph)
-
+	return (graph)
 }
