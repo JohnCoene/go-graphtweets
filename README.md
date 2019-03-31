@@ -40,6 +40,6 @@ search, _, _ := client.Search.Tweets(&twitter.SearchTweetParams{
 Build graphs.
 
 ```go
-mentionsGraph := graphtweets.GetMentionsGraph(*search) // build graph
-rtweetGraph := graphtweets.GetRetweetGraph(*search) // build graph
+mentionsGraph := graphtweets.GetMentionsGraph(*search) // build mentions graph
+rtweetGraph := graphtweets.GetRetweetGraph(*search) // build retweet graph
 ```
