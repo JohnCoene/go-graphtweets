@@ -1,8 +1,6 @@
 package graphtweets
 
-import (
-	"github.com/dghubble/go-twitter/twitter"
-)
+import "github.com/dghubble/go-twitter/twitter"
 
 // Edges A struct of edges
 type Edges struct {
@@ -43,8 +41,8 @@ func GetNodes(edges Edges) Nodes {
 	return (nodes)
 }
 
-// GetMentionsGraph Get a mentions graph
-func GetMentionsGraph(search twitter.Search) Graph {
+// GetEdges returns edges
+func GetEdges(search twitter.Search) Edges {
 	fr := make([]string, 0)
 	to := make([]string, 0)
 
@@ -62,8 +60,6 @@ func GetMentionsGraph(search twitter.Search) Graph {
 	}
 
 	edges := Edges{fr, to}
-	nodes := GetNodes(edges)
 
-	graph := Graph{nodes, edges}
-	return (graph)
+	return (edges)
 }
