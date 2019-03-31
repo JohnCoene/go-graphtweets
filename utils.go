@@ -6,6 +6,7 @@ import "github.com/dghubble/go-twitter/twitter"
 type Edges struct {
 	Source []string
 	Target []string
+	Number []int
 }
 
 // Nodes list of nodes
@@ -59,7 +60,9 @@ func GetMentionEdges(search twitter.Search) Edges {
 
 	}
 
-	edges := Edges{fr, to}
+	cn := make([]int, len(to))
+
+	edges := count(Edges{fr, to, cn})
 
 	return (edges)
 }
@@ -74,7 +77,26 @@ func GetRetweetEdges(search twitter.Search) Edges {
 		fr = append(fr, v.User.ScreenName)
 	}
 
-	edges := Edges{fr, to}
+	cn := make([]int, len(to))
+
+	edges := count(Edges{fr, to, cn})
 
 	return (edges)
+}
+
+func count(edges Edges) Edges {
+	ed := make(map[string]string)
+	occ := edges.Number
+
+	for i := range edges.Source {
+		if _, ok := ed[edges.Source[i]]; !ok {
+			ed[edges.Source[i]] = edges.Target[i]
+			occ[i] = occ[i] + 1
+		} else {
+			occ[i] = occ[i] + 1
+		}
+	}
+
+	edg := Edges{edges.Source, edges.Target, occ}
+	return (edg)
 }

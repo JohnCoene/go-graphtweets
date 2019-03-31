@@ -37,7 +37,7 @@ search, _, _ := client.Search.Tweets(&twitter.SearchTweetParams{
 })
 ```
 
-Build graphs
+Build graphs.
 
 ```go
 mentionsGraph := graphtweets.GetMentionsGraph(*search) // build graph
