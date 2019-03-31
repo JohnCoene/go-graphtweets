@@ -7,7 +7,7 @@ Build Twitter networks. `go-graphtweets` is the sister of the [`graphTweets`](ht
 Install `go-twitter`
 
 ```bash
-go get JohnCoene/go-graphtweets
+go get github.com/JohnCoene/go-graphtweets
 ```
 
 Install `go-graphtweets`
