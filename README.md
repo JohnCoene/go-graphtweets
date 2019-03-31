@@ -16,6 +16,10 @@ Install `go-graphtweets`
 go get github.com/JohnCoene/go-graphtweets
 ```
 
+## Documentation
+
+The documentation is on [godoc](https://godoc.org/github.com/JohnCoene/go-graphtweets)
+
 ## Example
 
 `GetMentionsGraph` expects a struct of type `twitter.Status` as returned by [`go-twitter`](https://github.com/dghubble/go-twitter).
