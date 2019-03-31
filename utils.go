@@ -41,8 +41,8 @@ func GetNodes(edges Edges) Nodes {
 	return (nodes)
 }
 
-// GetEdges returns edges
-func GetEdges(search twitter.Search) Edges {
+// GetMentionEdges returns edges of mentions
+func GetMentionEdges(search twitter.Search) Edges {
 	fr := make([]string, 0)
 	to := make([]string, 0)
 
@@ -57,6 +57,21 @@ func GetEdges(search twitter.Search) Edges {
 			to = append(to, v.User.ScreenName)
 		}
 
+	}
+
+	edges := Edges{fr, to}
+
+	return (edges)
+}
+
+// GetRetweetEdges returns edges retweeting
+func GetRetweetEdges(search twitter.Search) Edges {
+	fr := make([]string, 0)
+	to := make([]string, 0)
+
+	for _, v := range search.Statuses {
+		to = append(to, v.InReplyToScreenName)
+		fr = append(fr, v.User.ScreenName)
 	}
 
 	edges := Edges{fr, to}
