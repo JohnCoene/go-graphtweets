@@ -19,7 +19,8 @@ type WideGraph struct {
 	Nodes []Node `json:"nodes"`
 }
 
-// ToWide Convert Graph to wide
+// ToWide converts the default long Graph to a wide format
+// more convenient for JSON marshalling
 func ToWide(g *Graph) WideGraph {
 
 	// instatiate

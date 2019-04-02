@@ -2,14 +2,14 @@ package graphtweets
 
 import "github.com/dghubble/go-twitter/twitter"
 
-// Edges A struct of edges
+// Edges A struct of edges and their occurences
 type Edges struct {
 	Source []string `json:"source"`
 	Target []string `json:"target"`
 	Number []int    `json:"weight"`
 }
 
-// Nodes list of nodes
+// Nodes list of nodes and their occurences
 type Nodes struct {
 	Name   []string `json:"name"`
 	Number []int    `json:"size"`
@@ -72,7 +72,7 @@ func GetMentionEdges(search twitter.Search) Edges {
 	return (edges)
 }
 
-// GetRetweetEdges returns edges retweeting
+// GetRetweetEdges returns edges of retweets
 func GetRetweetEdges(search twitter.Search) Edges {
 	fr := make([]string, 0)
 	to := make([]string, 0)

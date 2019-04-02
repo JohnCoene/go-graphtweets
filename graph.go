@@ -4,7 +4,7 @@ import (
 	"github.com/dghubble/go-twitter/twitter"
 )
 
-// GetMentionsGraph Get a mentions graph
+// GetMentionsGraph constructs a graph of mentions
 func GetMentionsGraph(search twitter.Search) Graph {
 	edges := GetMentionEdges(search) // get edges
 	nodes := GetNodes(edges)         // get nodes based on edges
@@ -13,7 +13,7 @@ func GetMentionsGraph(search twitter.Search) Graph {
 	return (graph)
 }
 
-// GetRetweetGraph Get a retweet graph
+// GetRetweetGraph constructs a graph of retweets
 func GetRetweetGraph(search twitter.Search) Graph {
 	edges := GetRetweetEdges(search) // get edges
 	nodes := GetNodes(edges)         // get nodes based on edges
