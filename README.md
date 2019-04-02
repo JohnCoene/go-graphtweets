@@ -52,8 +52,16 @@ mentionsGraph := graphtweets.GetMentionsGraph(*search) // build mentions graph
 retweetGraph := graphtweets.GetRetweetGraph(*search) // build retweet graph
 ```
 
-Convert either graphs to wide (for generally more useful `json` conversion).
+Convert either graphs to wide.
 
 ```go
 wide := graphtweets.ToWide(&mentionsGraph)
+```
+
+Wide format is generally better/closer to the typical `JSON`.
+
+```go
+serialized,_ := json.Marshal(wide)
+
+fmt.Println(string(serialized))
 ```
