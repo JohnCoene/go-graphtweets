@@ -50,7 +50,7 @@ mentionsGraph := graphtweets.GetMentionsGraph(*search) // build mentions graph
 retweetGraph := graphtweets.GetRetweetGraph(*search) // build retweet graph
 ```
 
-Convert either graphs to wide.
+Convert either graphs to wide (for generally more useful `json` conversion).
 
 ```go
 wide := graphtweets.ToWide(&mentionsGraph)
