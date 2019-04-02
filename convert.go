@@ -4,12 +4,13 @@ package graphtweets
 type Edge struct {
 	Source string `json:"source"`
 	Target string `json:"target"`
-	Number int    `json:"size"`
+	Number int    `json:"weight"`
 }
 
 // Node A single node
 type Node struct {
-	Name string `json:"name"`
+	Name   string `json:"name"`
+	Number int    `json:"size"`
 }
 
 // WideGraph Constructs a wide graph
@@ -42,7 +43,8 @@ func ToWide(g *Graph) WideGraph {
 	// add nodes
 	for i, v := range g.Nodes.Name {
 		n := Node{
-			Name: v,
+			Name:   v,
+			Number: g.Nodes.Number[i],
 		}
 		resultingGraph.Nodes[i] = n
 	}

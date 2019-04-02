@@ -4,14 +4,15 @@ import "github.com/dghubble/go-twitter/twitter"
 
 // Edges A struct of edges
 type Edges struct {
-	Source []string
-	Target []string
-	Number []int
+	Source []string `json:"source"`
+	Target []string `json:"target"`
+	Number []int    `json:"weight"`
 }
 
 // Nodes list of nodes
 type Nodes struct {
-	Name []string
+	Name   []string `json:"name"`
+	Number []int    `json:"size"`
 }
 
 // Graph an object containing nodes and edges
@@ -22,23 +23,26 @@ type Graph struct {
 
 // GetNodes Get the nodes from the edges
 func GetNodes(edges Edges) Nodes {
-	encountered := map[string]bool{}
+	encountered := map[string]int{}
 
 	// Create a map of all unique elements.
 	for v := range edges.Source {
-		encountered[edges.Source[v]] = true
+		encountered[edges.Source[v]] = encountered[edges.Source[v]] + 1
 	}
 
 	for v := range edges.Target {
-		encountered[edges.Target[v]] = true
+		encountered[edges.Target[v]] = encountered[edges.Target[v]] + 1
 	}
 
 	// Place all keys from the map into a slice.
 	result := []string{}
-	for key := range encountered {
+	count := []int{}
+	for key, index := range encountered {
 		result = append(result, key)
+		count = append(count, index)
 	}
-	nodes := Nodes{result}
+	nodes := Nodes{result, count}
+
 	return (nodes)
 }
 
@@ -62,7 +66,8 @@ func GetMentionEdges(search twitter.Search) Edges {
 
 	cn := make([]int, len(to))
 
-	edges := count(Edges{fr, to, cn})
+	edges := Edges{fr, to, cn}
+	countEdges(&edges)
 
 	return (edges)
 }
@@ -79,12 +84,13 @@ func GetRetweetEdges(search twitter.Search) Edges {
 
 	cn := make([]int, len(to))
 
-	edges := count(Edges{fr, to, cn})
+	edges := Edges{fr, to, cn}
+	countEdges(&edges)
 
 	return (edges)
 }
 
-func count(edges Edges) Edges {
+func countEdges(edges *Edges) {
 	ed := make(map[string]string)
 	occ := edges.Number
 
@@ -97,6 +103,5 @@ func count(edges Edges) Edges {
 		}
 	}
 
-	edg := Edges{edges.Source, edges.Target, occ}
-	return (edg)
+	*edges = Edges{edges.Source, edges.Target, occ}
 }
