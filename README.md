@@ -1,4 +1,4 @@
-[![](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=flat-square)](https://godoc.org/github.com/JohnCoene/go-graphtweets)
+[![](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=flat-square)](https://godoc.org/github.com/JohnCoene/go-graphtweets/graphtweets)
 
 # go-graphtweets
 
@@ -22,7 +22,7 @@ go get github.com/JohnCoene/go-graphtweets
 
 ## Documentation
 
-The documentation is on [godoc](https://godoc.org/github.com/JohnCoene/go-graphtweets)
+The documentation is on [godoc](https://godoc.org/github.com/JohnCoene/go-graphtweets/graphtweets)
 
 ## Example
 
