@@ -1,3 +1,5 @@
+[![](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=flat-square)](https://godoc.org/github.com/JohnCoene/go-graphtweets)
+
 # go-graphtweets
 
 Build Twitter networks. `go-graphtweets` is the sister of the [`graphTweets`](https://github.com/JohnCoene/graphTweets) R package.
@@ -45,5 +47,11 @@ Build graphs.
 
 ```go
 mentionsGraph := graphtweets.GetMentionsGraph(*search) // build mentions graph
-rtweetGraph := graphtweets.GetRetweetGraph(*search) // build retweet graph
+retweetGraph := graphtweets.GetRetweetGraph(*search) // build retweet graph
+```
+
+Convert either graphs to wide.
+
+```go
+wide := graphtweets.ToWide(&mentionsGraph)
 ```
