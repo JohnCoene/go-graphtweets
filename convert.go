@@ -2,20 +2,20 @@ package graphtweets
 
 // Edge A single edge
 type Edge struct {
-	Source string
-	Target string
-	Number int
+	Source string `json:"source"`
+	Target string `json:"target"`
+	Number int    `json:"size"`
 }
 
 // Node A single node
 type Node struct {
-	Name string
+	Name string `json:"name"`
 }
 
 // WideGraph Constructs a wide graph
 type WideGraph struct {
-	Edges []Edge
-	Nodes []Node
+	Edges []Edge `json:"edges"`
+	Nodes []Node `json:"nodes"`
 }
 
 // ToWide Convert Graph to wide
