@@ -2,7 +2,9 @@
 
 # go-graphtweets
 
-Build Twitter networks. `go-graphtweets` is the sister of the [`graphTweets`](https://github.com/JohnCoene/graphTweets) R package.
+Build Twitter networks. 
+
+_`go-graphtweets` is the sister of the [`graphTweets`](https://github.com/JohnCoene/graphTweets) R package._
 
 ## Install
 
