@@ -13,7 +13,7 @@ type Node struct {
 	Number int    `json:"size"`
 }
 
-// WideGraph Constructs a wide graph
+// WideGraph constructs a wide graph
 type WideGraph struct {
 	Edges []Edge `json:"edges"`
 	Nodes []Node `json:"nodes"`

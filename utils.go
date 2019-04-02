@@ -2,20 +2,20 @@ package graphtweets
 
 import "github.com/dghubble/go-twitter/twitter"
 
-// Edges A struct of edges and their occurences
+// Edges a list of edges and their occurences
 type Edges struct {
 	Source []string `json:"source"`
 	Target []string `json:"target"`
 	Number []int    `json:"weight"`
 }
 
-// Nodes list of nodes and their occurences
+// Nodes a list of nodes and their occurences
 type Nodes struct {
 	Name   []string `json:"name"`
 	Number []int    `json:"size"`
 }
 
-// Graph an object containing nodes and edges
+// Graph a list containing nodes and edges
 type Graph struct {
 	Nodes Nodes
 	Edges Edges
