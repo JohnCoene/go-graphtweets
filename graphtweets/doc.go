@@ -18,6 +18,7 @@ Import the package with
 Then simply build retweets and mentions graphs with:
 	mentionsGraph := graphtweets.GetMentionsGraph(*search) // build mentions graph
 	retweetGraph := graphtweets.GetRetweetGraph(*search) // build retweet graph
+	hashtagGraph := graphtweets.GetHashtagGraph(*search) // build hashtag graph
 You can also convert the resulting graphs to a wider, more JSON-friendly format
 	wide := graphtweets.ToWide(&mentionsGraph)
 */

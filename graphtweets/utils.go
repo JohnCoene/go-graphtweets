@@ -22,7 +22,7 @@ type Graph struct {
 }
 
 // GetNodes Get the nodes from the edges
-func GetNodes(edges Edges) Nodes {
+func GetNodes(edges *Edges) Nodes {
 	encountered := map[string]int{}
 
 	// Create a map of all unique elements.
@@ -46,7 +46,9 @@ func GetNodes(edges Edges) Nodes {
 	return (nodes)
 }
 
-// GetMentionEdges returns edges of mentions
+// GetMentionEdges construct edges of mentions
+// where the source of the edge is the user tweeting
+// and the target is the user(s) tagged in the tweet(s).
 func GetMentionEdges(search twitter.Search) Edges {
 	fr := make([]string, 0)
 	to := make([]string, 0)
@@ -72,7 +74,9 @@ func GetMentionEdges(search twitter.Search) Edges {
 	return (edges)
 }
 
-// GetRetweetEdges returns edges of retweets
+// GetRetweetEdges construct edges of retweets
+// where the source of the edge is the user tweeting
+// and the target is the user retweeted.
 func GetRetweetEdges(search twitter.Search) Edges {
 	fr := make([]string, 0)
 	to := make([]string, 0)
@@ -80,6 +84,34 @@ func GetRetweetEdges(search twitter.Search) Edges {
 	for _, v := range search.Statuses {
 		to = append(to, v.InReplyToScreenName)
 		fr = append(fr, v.User.ScreenName)
+	}
+
+	cn := make([]int, len(to))
+
+	edges := Edges{fr, to, cn}
+	countEdges(&edges)
+
+	return (edges)
+}
+
+// GetHashtagEdges
+// where the source of the edge is the user tweeting
+// and the target is the hashtag used in the tweet.
+func GetHashtagEdges(search twitter.Search) Edges {
+	fr := make([]string, 0)
+	to := make([]string, 0)
+
+	for _, v := range search.Statuses {
+		hashtag := v.Entities.Hashtags
+
+		for _, v := range hashtag {
+			fr = append(fr, v.Text)
+		}
+
+		for i := 0; i < len(hashtag); i++ {
+			to = append(to, v.User.ScreenName)
+		}
+
 	}
 
 	cn := make([]int, len(to))

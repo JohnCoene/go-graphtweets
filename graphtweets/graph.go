@@ -7,7 +7,7 @@ import (
 // GetMentionsGraph constructs a graph of mentions
 func GetMentionsGraph(search twitter.Search) Graph {
 	edges := GetMentionEdges(search) // get edges
-	nodes := GetNodes(edges)         // get nodes based on edges
+	nodes := GetNodes(&edges)        // get nodes based on edges
 
 	graph := Graph{nodes, edges}
 	return (graph)
@@ -16,7 +16,16 @@ func GetMentionsGraph(search twitter.Search) Graph {
 // GetRetweetGraph constructs a graph of retweets
 func GetRetweetGraph(search twitter.Search) Graph {
 	edges := GetRetweetEdges(search) // get edges
-	nodes := GetNodes(edges)         // get nodes based on edges
+	nodes := GetNodes(&edges)        // get nodes based on edges
+
+	graph := Graph{nodes, edges}
+	return (graph)
+}
+
+// GetHashtagGraph constructs a graph of hashtags
+func GetHashtagGraph(search twitter.Search) Graph {
+	edges := GetHashtagEdges(search) // get edges
+	nodes := GetNodes(&edges)        // get nodes based on edges
 
 	graph := Graph{nodes, edges}
 	return (graph)

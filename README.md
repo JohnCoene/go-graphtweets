@@ -50,6 +50,7 @@ Build graphs.
 ```go
 mentionsGraph := graphtweets.GetMentionsGraph(*search) // build mentions graph
 retweetGraph := graphtweets.GetRetweetGraph(*search) // build retweet graph
+hashtagGraph := graphtweets.GetHashtagGraph(*search) // build hashtag graph
 ```
 
 Convert either graphs to wide.
