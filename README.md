@@ -11,13 +11,13 @@ _`go-graphtweets` is the sister of the [`graphTweets`](https://github.com/JohnCo
 Install `go-twitter`
 
 ```bash
-go get dghubble/go-twitter
+go get github.com/dghubble/go-twitter/twitter
 ```
 
 Install `go-graphtweets`
 
 ```bash
-go get github.com/JohnCoene/go-graphtweets
+go get github.com/JohnCoene/go-graphtweets/graphtweets
 ```
 
 ## Documentation
