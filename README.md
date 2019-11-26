@@ -1,4 +1,4 @@
-[![](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=flat-square)](https://godoc.org/github.com/JohnCoene/go-graphtweets/graphtweets)
+[![Go Report Card](https://goreportcard.com/badge/github.com/JohnCoene/go-graphtweets)](https://goreportcard.com/report/github.com/JohnCoene/go-graphtweets) [![](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=flat-square)](https://godoc.org/github.com/JohnCoene/go-graphtweets/graphtweets)
 
 # go-graphtweets
 
@@ -50,6 +50,7 @@ Build graphs.
 ```go
 mentionsGraph := graphtweets.GetMentionsGraph(*search) // build mentions graph
 retweetGraph := graphtweets.GetRetweetGraph(*search) // build retweet graph
+hashtagGraph := graphtweets.GetHashtagGraph(*search) // build hashtag graph
 ```
 
 Convert either graphs to wide.
