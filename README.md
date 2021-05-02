@@ -26,8 +26,6 @@ The documentation is on [godoc](https://godoc.org/github.com/JohnCoene/go-grapht
 
 ## Example
 
-`GetMentionsGraph` expects a struct of type `twitter.Status` as returned by [`go-twitter`](https://github.com/dghubble/go-twitter).
-
 Set up `go-twitter` session.
 
 ```go
